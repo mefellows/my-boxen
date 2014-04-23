@@ -3,12 +3,6 @@ FORGE
   specs:
     puppetlabs/stdlib (4.1.0)
 
-PATH
-  remote: /Users/mfellows/development/boxen/puppet-boxen_private
-  specs:
-    boxen_private (0.1.0)
-      puppetlabs/stdlib (>= 0)
-
 GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
@@ -181,7 +175,6 @@ GITHUBTARBALL
 
 DEPENDENCIES
   boxen (= 3.4.2)
-  boxen_private (>= 0)
   chrome (= 1.1.2)
   dnsmasq (= 1.0.1)
   dockutil (= 0.1.2)
@@ -202,6 +195,7 @@ DEPENDENCIES
   module-data (= 0.0.3)
   nginx (= 1.4.3)
   nodejs (= 3.7.0)
+  onegeek/boxen-private (>= 0)
   openssl (= 1.0.0)
   osx (= 2.2.2)
   phantomjs (= 2.3.0)

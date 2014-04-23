@@ -52,6 +52,9 @@ Service {
 Homebrew::Formula <| |> -> Package <| |>
 
 node default {
+
+  $HOME = "/Users/${::boxen_user}"
+
   # core modules, needed for most things
   include dnsmasq
   include git
@@ -153,7 +156,7 @@ node default {
   include osx::software_update
   include osx::no_network_dsstores
 
-  boxen::osx_defaults { 'Disable autocorrect':
+  boxen::osx_defaults { 'Enable Secondary Click':
     ensure => present,
     domain => 'com.apple.driver.AppleBluetoothMultitouch.mouse',
     key    => 'MouseButtonMode',
@@ -168,16 +171,64 @@ node default {
   # Add/remove applications to the Dock
   include dockutil
 
-  dockutil::item { 'Add iTerm':
-    item     => '/Applications/iTerm.app',
-    label    => 'iTerm',
+  dockutil::item { 'Add Terminal':
+    item     => '/Applications/Utilities/Terminal.app',
+    label    => 'Terminal',
     action   => 'add',
     position => 2,
   }
 
-  dockutil::item { 'Add MacVim':
-    item     => '/Applications/MacVim.app',
-    label    => 'MacVim',
+  dockutil::item { 'Add Sublime':
+    item     => '/Applications/Sublime Text 2.app',
+    label    => 'Sublime Text 2',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add Spotify':
+    item     => '/Applications/Spotify.app',
+    label    => 'Spotify',
+    action   => 'add',
+    position => 2,
+  }
+  dockutil::item { 'Add Firefox':
+    item     => '/Applications/Firefox.app',
+    label    => 'Firefox',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add Google Chrome':
+    item     => '/Applications/Google Chrome.app',
+    label    => 'Google Chrome',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add HipChat':
+    item     => '/Applications/HipChat.app',
+    label    => 'HipChat',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add Dropbox':
+    item     => '/Applications/Dropbox.app',
+    label    => 'Dropbox',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add Evernote':
+    item     => '/Applications/Evernote.app',
+    label    => 'Evernote',
+    action   => 'add',
+    position => 2,
+  }
+
+  dockutil::item { 'Add Intellij':
+    item     => '/Applications/IntelliJ IDEA 13 CE.app',
+    label    => 'IntelliJ IDEA 13 CE',
     action   => 'add',
     position => 3,
   }
@@ -224,7 +275,6 @@ node default {
 
 
 
-  #### Bash configuration, VIM defaults etc.
 
   #### AWS/etc. configuration/expoarts/keys etc.?
 
@@ -240,7 +290,6 @@ node default {
 
   # Enable path view in Dock
   # defaults write com.apple.finder FXShowPosixPathInTitle -bool YES; killall Dock
-
 
 
 

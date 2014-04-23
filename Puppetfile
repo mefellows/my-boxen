@@ -23,7 +23,7 @@ end
 
 # Shortcut for a module under development
 def dev(name, *args)
-  mod name, :path => "#{ENV['HOME']}/src/boxen/puppet-#{name}"
+  mod name, :path => "#{ENV['HOME']}/development/boxen/puppet-#{name}"
 end
 
 # Includes many of our custom types and providers, as well as global
@@ -88,7 +88,12 @@ github "evernote",    "2.0.5"
 github "intellij",    "1.5.1"
 github "hipchat",    "1.1.1"
 
+# Private modules
+# mod "onegeek/boxen-private",
+#   :git => "git@bitbucket.org:mfellows/onegeek-boxen-private.git",
+#   :ref => '0.0.2'
 
+dev "boxen_private"
 
 
 # Optional/custom modules. There are tons available at
