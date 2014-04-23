@@ -57,5 +57,39 @@ github "stdlib",      "4.1.0", :repo => "puppetlabs/puppetlabs-stdlib"
 github "sudo",        "1.0.0"
 github "xquartz",     "1.1.1"
 
+# Matt's modules
+# @TODO: Refactor these into modules/roles
+github "virtualbox",  "1.0.11"
+github "java",	      "1.5.0"	 	
+
+# IDEs and Text Editors
+github "sublime_text_2", "1.1.2"
+
+
+github "chrome",     "1.1.2"
+github "dockutil",   "0.1.2"
+github "firefox",    "1.1.9"
+#github "macvim",     "1.0.0"
+github "osx",        "2.2.2"
+#github "iterm2",     "1.0.3"
+#github "pow",        "1.0.0"
+#github "autojump",   "1.0.0"
+#github "phantomjs",  "2.0.2"
+#github "postgresapp", "1.0.0"
+#github "mysql",      "1.1.5"
+#github "redis",      "1.0.0"
+#github "sequel_pro", "1.0.0"
+github "heroku",     "2.1.1"
+github "spotify",    "1.0.1"
+github "vagrant",    "3.0.7"
+#github "zsh",        "1.0.0"
+github "dropbox",    "1.2.0"
+github "evernote",    "2.0.5"
+github "intellij",    "1.5.1"
+github "hipchat",    "1.1.1"
+
+
+
+
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
