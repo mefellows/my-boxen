@@ -96,30 +96,58 @@ node default {
   include virtualbox
   include java
   include sublime_text_2
+  include iterm2::stable
+
   sublime_text_2::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
   }
 
-  # Export key bindings, user settings etc.
-  # /Users/mfellows/Library/Application Suppport/Sublime Text 2/Packages/User/Package Control.sublime-settings"
-  # /Users/mfellows/Library/Application Suppport/Sublime Text 2/Packages/User/.sublime-settings"
+  sublime_text_2::package { 'Scalaformat':
+    source => 'timonwong/ScalaFormat'
+  }
 
-#  file { "${boxen::config::bindir}/subl":
-#    ensure  => link,
-#    target  => '/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl',
-#    mode    => '0755',
-#    require => Package['SublimeText2'],
-#  }
+  sublime_text_2::package { 'ScalaTest':
+    source => 'patgannon/sublimetext-scalatest'
+  }
 
+  sublime_text_2::package { 'Git':
+    source => 'timonwong/ScalaFormat'
+  }
 
+  sublime_text_2::package { 'Puppet':
+    source => 'russCloak/SublimePuppet'
+  }
 
-# IDE
- class { 'intellij':
+  sublime_text_2::package { 'Puppet Syntax':
+    source => 'Stubbs/sublime-puppet-syntax'
+  }
+
+  sublime_text_2::package { 'Git Gutter':
+    source => 'jisaacks/GitGutter'
+  }
+
+  sublime_text_2::package { 'SideBar Gutter':
+    source => 'SublimeText/SideBarGit'
+  }
+
+  sublime_text_2::package { 'Gist':
+    source => 'condemil/Gist'
+  }
+
+  sublime_text_2::package { 'Compass':
+    source => 'whatwedo/Sublime-Text-2-Compass-Build-System'
+  }
+
+  sublime_text_2::package { 'Sass':
+    source => 'nathos/sass-textmate-bundle'
+  }
+
+  # IDE
+  class { 'intellij':
    edition => 'community',
- }
+  }
 
-
-# Browsers
+  # Browsers
   include chrome
   include firefox
 
@@ -132,8 +160,10 @@ node default {
   # Dropbox
   include dropbox
   include evernote
-
   include hipchat
+  include omnigraffle
+  include omnigraffle::pro
+  include skype
 
   # Packages installed via homebrew
   package {
@@ -165,7 +195,7 @@ node default {
   }
 
   class { 'osx::dock::icon_size':
-    size => 26
+    size => 36
   }
 
   # Add/remove applications to the Dock
@@ -175,7 +205,7 @@ node default {
     item     => '/Applications/Utilities/Terminal.app',
     label    => 'Terminal',
     action   => 'add',
-    position => 2,
+    position => 1,
   }
 
   dockutil::item { 'Add Sublime':
@@ -272,27 +302,28 @@ node default {
   # Node modules
 
   ### Bower, yeoman, s8 ....
+  # install some npm modules
+  nodejs::module { 'grunt':
+    node_version => 'v0.10.26'
+  }
 
+  nodejs::module { 'express':
+    node_version => 'v0.10.26'
+  }
 
+  nodejs::module { 'bower':
+    node_version => 'v0.10.26'
+  }
 
+  nodejs::module { 'yeoman':
+    node_version => 'v0.10.26'
+  }
 
-  #### AWS/etc. configuration/expoarts/keys etc.?
+  # nodejs::module { 'angular':
+  #   node_version => 'v0.10.26'
+  # }
 
-  #### SSH Keys and so on
-
-
-
-
-
-  ### Keyboard/Mouse
-  
-  # Set default keyboard to Dvorak
-
-  # Enable path view in Dock
-  # defaults write com.apple.finder FXShowPosixPathInTitle -bool YES; killall Dock
-
-
-
-
-
+  # nodejs::module { 'generator-scalatra':
+  #   node_version => 'v0.10.26'
+  # }
 }
