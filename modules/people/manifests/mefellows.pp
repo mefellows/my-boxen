@@ -36,11 +36,11 @@ class people::mefellows {
 
   # Install my OSS projects to begin with
   repository {
-    '/Users/${::boxen_user}/development/public/life-metrics':
+    "/Users/${::boxen_user}/development/public/life-metrics":
       source   => 'mfellows/life-metrics', #short hand for github repos
       provider => 'git';
 
-    '/Users/${::boxen_user}/development/public/cloudspec':
+    "/Users/${::boxen_user}/development/public/cloudspec":
       source   => 'mfellows/cloudspec',
       provider => 'git',
   }
