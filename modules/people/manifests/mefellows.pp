@@ -42,7 +42,15 @@ class people::mefellows {
 
     "/Users/${::boxen_user}/development/public/cloudspec":
       source   => 'mefellows/cloudspec',
-      provider => 'git',
+      provider => 'git';
+
+    "/Users/${::boxen_user}/development/public/scalam-generator":
+      source   => 'mefellows/scalam-generator',
+      provider => 'git';
+
+    # "/Users/${::boxen_user}/development/public/scalam":
+    #   source   => 'mefellows/scalam',
+    #   provider => 'git';
   }
 
 
