@@ -10,8 +10,8 @@ FORGE
 
 GIT
   remote: git@bitbucket.org:mfellows/onegeek-boxen-private.git
-  ref: 0.0.5
-  sha: ad0ea38cd97f0e66b270fa129969a78227124753
+  ref: 0.0.7
+  sha: 3e55b152eb467991954f859569d73fe47934c024
   specs:
     onegeek/boxen_private (0.1.0)
       puppetlabs/stdlib (>= 0)

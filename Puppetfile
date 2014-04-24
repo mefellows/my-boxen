@@ -88,7 +88,7 @@ private_repo = ENV['BOXEN_PRIVATE_REPO']
 
 mod "onegeek/boxen_private",
   :git => private_repo,
-  :ref => '0.0.5'
+  :ref => '0.0.7'
 
 # dev "boxen_private"
 
