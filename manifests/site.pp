@@ -161,7 +161,7 @@ node default {
   include dropbox
   include evernote
   include hipchat
-  include omnigraffle
+  # include omnigraffle # Only need Pro
   include omnigraffle::pro
   include skype
 
@@ -202,8 +202,8 @@ node default {
   include dockutil
 
   dockutil::item { 'Add Terminal':
-    item     => '/Applications/Utilities/Terminal.app',
-    label    => 'Terminal',
+    item     => '/Applications/iTerm.app',
+    label    => 'iTerm',
     action   => 'add',
     position => 1,
   }
