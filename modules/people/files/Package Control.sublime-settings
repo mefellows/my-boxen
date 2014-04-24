@@ -1,0 +1,32 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"Apache Pig",
+		"Coffee Formatter",
+		"CoffeeScript",
+		"Compass",
+		"Corona Editor",
+		"DocBlockr",
+		"Emmet",
+		"Emmet Css Snippets",
+		"Gist",
+		"Git",
+		"GitGutter",
+		"jQuery",
+		"LaTeXTools",
+		"Local History",
+		"Nettuts+ Fetch",
+		"Package Control",
+		"PHP Zend Framework 2 Helper",
+		"PHPUnit",
+		"Puppet",
+		"Puppet Syntax checking",
+		"Sass",
+		"ScalaFormat",
+		"SFTP",
+		"SideBarEnhancements",
+		"Sublime Files",
+		"View In Browser"
+	]
+}

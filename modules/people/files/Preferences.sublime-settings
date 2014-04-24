@@ -1,0 +1,50 @@
+{
+	"bold_folder_labels": true,
+	"detect_slow_plugins": false,
+	"file_exclude_patterns":
+	[
+		"*.css",
+		".DS_Store",
+		"*.scssc"
+	],
+	"folder_exclude_patterns":
+	[
+		"tmp",
+		".sass-cache",
+		"wp-admin",
+		"wp-includes",
+		"output",
+		"target",
+		".git",
+		".svn",
+		"CVS"
+	],
+	"font_options":
+	[
+		"no_bold",
+		"subpixel_antialias"
+	],
+	"font_size": 14.0,
+	"ignored_packages":
+	[
+		"jQuery",
+		"Git",
+		"Vintage",
+		"PHP Zend Framework 2 Helper",
+		"Local History",
+		"SFTP",
+		"ASP",
+		"Apache Pig",
+		"SideBarEnhancements",
+		"View In Browser",
+		"Sublime Files",
+		"GitGutter",
+		"LaTeXTools"
+	],
+	"open_files_in_new_window": false,
+	"scroll_past_end": true,
+	"spell_check": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}
