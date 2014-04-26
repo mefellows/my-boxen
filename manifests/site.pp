@@ -98,6 +98,14 @@ node default {
   include sublime_text_2
   include iterm2::stable
 
+
+  # Consider pkgdmg as provider?
+  package { 'unity-4.3.4':
+    # provider => 'appdmg',
+    provider => 'pkgdmg',
+    source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
+  }
+
   sublime_text_2::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
   }

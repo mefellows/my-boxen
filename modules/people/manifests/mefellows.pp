@@ -69,7 +69,7 @@ class people::mefellows {
 
   file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
     ensure    => file,
-    source    => 'puppet:///modules/people/ide/mfellows-jetbrain-soptions-keymap.xml',
+    source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',
     owner     => $::boxen_user,
     group     => 'staff'
   }
