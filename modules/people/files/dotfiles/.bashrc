@@ -96,6 +96,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Enable bash Git completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
 umask 022
 
 if [ "${SHELL}" = "/bin/bash" ] ; then
@@ -111,4 +116,4 @@ export PS1
 
 export EDITOR='subl -w'
 export CVSROOT=:pserver:mfellows@cvs.mit:2401/repository/www
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512m"
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1536m"

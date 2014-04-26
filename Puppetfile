@@ -75,13 +75,18 @@ github "hipchat",     "1.1.1"
 github "iterm2",      "1.0.9"
 github "skype",       "1.0.8"
 github "omnigraffle",      "1.3.0"
+github "mongodb",     "1.3.0"
 # github "sudo",        "1.0.0" # This never really seemed to work, it just replaced my sudoers with the templated sudoers file
 
 forge "https://forge.puppetlabs.com"
 
 # For pulling down repos
 mod "puppetlabs/vcsrepo", "0.2.0"
+mod "camptocamp/archive", "0.0.1"
 
+mod "mozilla/osxutils",
+  :git => 'git://github.com/mozilla/build-puppet.git',
+  :path => "modules/osxutils"
 
 # Private modules -> not for you to see!
 private_repo = ENV['BOXEN_PRIVATE_REPO']

@@ -147,6 +147,38 @@ node default {
    edition => 'community',
   }
 
+  # Update plist to use Java 1.7
+  exec { 'intellij-replace-required-jdk':
+    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist",
+    unless    => "grep 1.7 /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist"
+  }
+
+  # Install Scala plugin
+  $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
+  $intellij_plugin_dir2 = "/Users/${::boxen_user}/Library/Application Support/IdeaIC13"
+
+  file { $intellij_plugin_dir2:
+    ensure  => directory,
+    owner   => $::boxen_user,
+    group   => 'staff'
+  }
+
+  archive { 'intellij-scala-plugin':
+    ensure      => present,
+    url         => 'http://plugins.jetbrains.com/files/1347/15875/scala-intellij-bin-0.35.683.zip',
+    checksum    => false,
+    target      => "${intellij_plugin_dir}",
+    src_target  => '/tmp',
+    timeout     => '300'
+  }
+  # archive { 'intellij-ruby-plugin':
+  #   ensure      => present,
+  #   checksum    => false,
+  #   url         => 'http://plugins.jetbrains.com/files/1293/15861/ruby-6.5.0.20140404.zip',
+  #   target      => "${intellij_plugin_dir}/Ruby",
+  #   src_target  => '/tmp'
+  # }
+
   # Browsers
   include chrome
   include firefox
@@ -174,8 +206,14 @@ node default {
       'scala',
       'sbt',
       'ctags',
-      'ruby-build'
+      'ruby-build',
+      'gnu-sed', # replace useless sed that comes with OSX
     ]:
+  }
+
+  package {
+    'bash-completion':
+      ensure => present
   }
 
   # OS Customizations
@@ -185,6 +223,17 @@ node default {
   include osx::finder::empty_trash_securely
   include osx::software_update
   include osx::no_network_dsstores
+
+  # Show the path bar
+
+
+  osxutils::defaults { 'com.apple.finder':
+    key     => 'ShowPathbar -bool',
+    value   => true,
+    user    => 'root'
+  }
+
+  include mongodb
 
   boxen::osx_defaults { 'Enable Secondary Click':
     ensure => present,

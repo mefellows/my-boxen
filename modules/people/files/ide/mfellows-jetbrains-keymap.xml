@@ -1,0 +1,22 @@
+<keymap version="1" name="Dvorak - Eclipse" parent="Eclipse (Mac OS X)">
+<action id="Back">
+<mouse-shortcut keystroke="button4" />
+</action>
+<action id="CloseAllEditors">
+<keyboard-shortcut first-keystroke="shift meta W" />
+<keyboard-shortcut first-keystroke="shift control meta W" />
+</action>
+<action id="CommentByBlockComment" />
+<action id="CommentByLineComment">
+<keyboard-shortcut first-keystroke="meta SLASH" />
+<keyboard-shortcut first-keystroke="meta OPEN_BRACKET" />
+</action>
+<action id="Find">
+<keyboard-shortcut first-keystroke="meta F" />
+</action>
+<action id="GotoDeclaration">
+  <keyboard-shortcut first-keystroke="F3" />
+  <mouse-shortcut keystroke="control button1" />
+  <mouse-shortcut keystroke="meta button1" />
+</action>
+</keymap>

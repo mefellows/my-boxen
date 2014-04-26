@@ -15,6 +15,10 @@ class people::mefellows {
     source       => 'puppet:///modules/people/.vimrc'
   }
 
+  file { "/Users/${::boxen_user}/.inputrc":
+    source       => 'puppet:///modules/people/.inputrc'
+  }
+
   file { "/Users/${::boxen_user}/Library/Preferences/com.apple.Terminal.plist":
     ensure       => file,
     source       => 'puppet:///modules/people/terminal.settings.terminal'
@@ -54,10 +58,25 @@ class people::mefellows {
   }
 
 
-  # Export key bindings, user settings etc.
+  # Export key bindings, user settings etc. for Jetbrains IDE
 
+  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/keymaps/mfellows-keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-jetbrains-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-jetbrain-soptions-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  # Export key bindings, user settings etc. for Sublime IDE
   file { [ "/Users/${::boxen_user}/Library/Application Support/Sublime Text 2/Packages/User/"]:
-    ensure		=> directory
+    ensure    => directory
   }
 
   file { "/Users/${::boxen_user}/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings":
