@@ -19,6 +19,10 @@ class people::mefellows {
     source       => 'puppet:///modules/people/.inputrc'
   }
 
+  file { "/Users/${::boxen_user}/.node-version":
+    source       => 'puppet:///modules/people/.node-version'
+  }
+
   file { "/Users/${::boxen_user}/Library/Preferences/com.apple.Terminal.plist":
     ensure       => file,
     source       => 'puppet:///modules/people/terminal.settings.terminal'
