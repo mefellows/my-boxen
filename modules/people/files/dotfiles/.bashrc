@@ -75,6 +75,7 @@ alias ll='ls -larth'
 alias la='ls -A'
 alias l='ls -CF'
 alias top='top -o -rsize'
+alias mongo='mongo --port=17017'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
