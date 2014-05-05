@@ -26,6 +26,11 @@ GIT
       puppetlabs/stdlib (>= 0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-android
+  specs:
+    android (1.2.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
     boxen (3.4.2)
@@ -196,6 +201,16 @@ GITHUBTARBALL
     virtualbox (1.0.11)
 
 GITHUBTARBALL
+  remote: boxen/puppet-webstorm
+  specs:
+    webstorm (1.1.1)
+
+GITHUBTARBALL
+  remote: boxen/puppet-wget
+  specs:
+    wget (1.0.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-xquartz
   specs:
     xquartz (1.1.1)
@@ -216,6 +231,7 @@ GITHUBTARBALL
     module-data (0.0.3)
 
 DEPENDENCIES
+  android (= 1.2.1)
   boxen (= 3.4.2)
   camptocamp/archive (= 0.0.1)
   chrome (= 1.1.2)
@@ -257,5 +273,7 @@ DEPENDENCIES
   sudo (= 1.0.0)
   vagrant (= 3.0.7)
   virtualbox (= 1.0.11)
+  webstorm (= 1.1.1)
+  wget (= 1.0.1)
   xquartz (= 1.1.1)
 
