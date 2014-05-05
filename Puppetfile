@@ -71,12 +71,14 @@ github "vagrant",     "3.0.7"
 github "dropbox",     "1.2.0"
 github "evernote",    "2.0.5"
 github "intellij",    "1.5.1"
+github "webstorm",    "1.1.1"
 github "hipchat",     "1.1.1"
 github "iterm2",      "1.0.9"
 github "skype",       "1.0.8"
 github "omnigraffle",      "1.3.0"
 github "mongodb",     "1.3.0"
-# github "sudo",        "1.0.0" # This never really seemed to work, it just replaced my sudoers with the templated sudoers file
+github "android",     "1.2.1"
+github "wget",       "1.0.1"
 
 forge "https://forge.puppetlabs.com"
 
