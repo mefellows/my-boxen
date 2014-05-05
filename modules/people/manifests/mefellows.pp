@@ -56,6 +56,10 @@ class people::mefellows {
       source   => 'mefellows/scalam-generator',
       provider => 'git';
 
+    "/Users/${::boxen_user}/development/public/generator-ionic":
+      source   => 'mefellows/generator-ionic',
+      provider => 'git';
+
     # "/Users/${::boxen_user}/development/public/scalam":
     #   source   => 'mefellows/scalam',
     #   provider => 'git';
@@ -74,6 +78,20 @@ class people::mefellows {
   file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/keymaps/mfellows-keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-webstorm-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/options/keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-webstorm-options-keymap.xml',
     owner     => $::boxen_user,
     group     => 'staff'
   }
