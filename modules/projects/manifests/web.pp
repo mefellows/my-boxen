@@ -1,14 +1,6 @@
 class projects::web {
   notify { 'Loading Web projects yo': }
 
-
-
-#   notify { 'Hey, you\'re a Melbourne IT employee. Let me configure your work setup.': }
-
-
-
-
-
   # PHP / Zend Setup
   # include php::5_3_8
   # Install a php version and set as the global default php

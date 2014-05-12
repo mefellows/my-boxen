@@ -134,4 +134,48 @@ class people::mefellows {
     group     => 'wheel'
   }
 
+
+  # For cordova / java
+  $ant_version = "apache-ant-1.9.3"
+
+  file { "/opt/${ant_version}/":
+    ensure  => directory
+  }
+
+  archive { 'ant':
+    ensure      => present,
+    url         => "http://mirror.rackcentral.com.au/apache/ant/binaries/${ant_version}-bin.tar.gz",
+    target      => "/opt/",
+    checksum    => false,
+    # Change src dir to speed things up after a restart?
+    src_target  => '/opt/src/',
+    timeout     => '300'
+  }
+
+  file { '/opt/bin/ant':
+    ensure    => link,
+    target    => "/opt/${ant_version}/bin/ant"
+  }
+
+  #
+  # Game Dev
+  #
+  include android::sdk
+  include android::tools
+  include android::platform_tools
+  # android::build_tools
+
+  # Consider pkgdmg as provider?
+  package { 'android-intel-HAXM':
+    # provider => 'appdmg',
+    provider => 'pkgdmg',
+    source => 'https://software.intel.com/sites/default/files/managed/68/45/haxm-macosx_r04.zip'
+  }
+
+  package { 'unity-4.3.4':
+    # provider => 'appdmg',
+    provider => 'pkgdmg',
+    source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
+  }
+
 }

@@ -130,49 +130,6 @@ node default {
   include sublime_text_2
   include iterm2::stable
 
-  # For cordova / java
-  $ant_version = "apache-ant-1.9.3"
-
-  file { "/opt/${ant_version}/":
-    ensure  => directory
-  }
-
-  archive { 'ant':
-    ensure      => present,
-    url         => "http://mirror.rackcentral.com.au/apache/ant/binaries/${ant_version}-bin.tar.gz",
-    target      => "/opt/",
-    checksum    => false,
-    # Change src dir to speed things up after a restart?
-    src_target  => '/opt/src/',
-    timeout     => '300'
-  }
-
-  file { '/opt/bin/ant':
-    ensure    => link,
-    target    => "/opt/${ant_version}/bin/ant"
-  }
-
-  #
-  # Game Dev
-  #
-  include android::sdk
-  include android::tools
-  include android::platform_tools
-  # android::build_tools
-
-  # Consider pkgdmg as provider?
-  package { 'android-intel-HAXM':
-    # provider => 'appdmg',
-    provider => 'pkgdmg',
-    source => 'https://software.intel.com/sites/default/files/managed/68/45/haxm-macosx_r04.zip'
-  }
-
-  package { 'unity-4.3.4':
-    # provider => 'appdmg',
-    provider => 'pkgdmg',
-    source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
-  }
-
   sublime_text_2::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
   }
@@ -235,28 +192,6 @@ node default {
     unless    => "grep 1.7 /Applications/WebStorm.app/Contents/Info.plist"
   }
 
-
-  # Install Scala plugin
-  $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
-  $intellij_plugin_dir2 = "/Users/${::boxen_user}/Library/Application Support/IdeaIC13"
-
-  file { $intellij_plugin_dir2:
-    ensure  => directory,
-    owner   => $::boxen_user,
-    group   => 'staff'
-  }
-
-  archive { 'intellij-scala-plugin':
-    ensure      => present,
-    url         => 'http://plugins.jetbrains.com/files/1347/15875/scala-intellij-bin-0.35.683.zip',
-    checksum    => false,
-    target      => "${intellij_plugin_dir}",
-
-    # Change src dir to speed things up after a restart?
-    src_target  => '/opt/src',
-    timeout     => '300'
-  }
-
   # Browsers
   include firefox::nightly
   include chrome::canary
@@ -304,14 +239,11 @@ node default {
 
   # Show the path bar
 
-
   osxutils::defaults { 'com.apple.finder':
     key     => 'ShowPathbar -bool',
     value   => true,
     user    => 'root'
   }
-
-  include mongodb
 
   boxen::osx_defaults { 'Enable Secondary Click':
     ensure => present,
@@ -425,7 +357,6 @@ node default {
   # Spotify
   include spotify
 
-
   # Node modules
 
   ### Bower, yeoman, s8 ....
@@ -433,14 +364,6 @@ node default {
   nodejs::module { ['cordova', 'ionic', 'ios-sim', 'ripple', 'grunt', 'generator-ionic', 'karma', 'karma-jasmine', 'express', 'bower', 'yeoman']:
     node_version => 'v0.10.26'
   }
-
-  # nodejs::module { 'angular':
-  #   node_version => 'v0.10.26'
-  # }
-
-  # nodejs::module { 'generator-scalatra':
-  #   node_version => 'v0.10.26'
-  # }
 
   include projects::web
   include projects::mit
