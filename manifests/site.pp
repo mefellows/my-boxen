@@ -193,7 +193,10 @@ node default {
   }
 
   # Browsers
-  include firefox::nightly
+
+  # include chrome
+  # include firefox
+  include firefox::beta
   include chrome::canary
 
   # Vagrant

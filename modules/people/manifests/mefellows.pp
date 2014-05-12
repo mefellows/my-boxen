@@ -102,20 +102,6 @@ class people::mefellows {
     group     => 'staff'
   }
 
-  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/keymaps/mfellows-keymap.xml":
-    ensure    => file,
-    source    => 'puppet:///modules/people/ide/mfellows-webstorm-keymap.xml',
-    owner     => $::boxen_user,
-    group     => 'staff'
-  }
-
-  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/options/keymap.xml":
-    ensure    => file,
-    source    => 'puppet:///modules/people/ide/mfellows-webstorm-options-keymap.xml',
-    owner     => $::boxen_user,
-    group     => 'staff'
-  }
-
   # Export key bindings, user settings etc. for Sublime IDE
   file { [ "/Users/${::boxen_user}/Library/Application Support/Sublime Text 2/Packages/User/"]:
     ensure    => directory
@@ -128,8 +114,16 @@ class people::mefellows {
 
   # Root access baby!
   file { '/etc/sudoers':
+    ensure    => file,
+    source    => 'puppet:///modules/people/sudoers',
+    owner     => 'root',
+    group     => 'wheel'
+  }
+
+  # Root access baby!
+  file { '/etc/hosts':
     ensure		=> file,
-    source		=> 'puppet:///modules/people/sudoers',
+    source		=> 'puppet:///modules/people/hosts',
     owner     => 'root',
     group     => 'wheel'
   }
