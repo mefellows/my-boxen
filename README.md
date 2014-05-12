@@ -1,3 +1,17 @@
+# Getting started
+
+##Install and Setup boxen repo
+    sudo mkdir -p /opt/boxen
+    sudo chown ${USER}:staff /opt/boxen
+git clone git clone git@github.com:melbourneitdev/boxen.git /opt/boxen/repo
+    git push -u origin master
+
+##Run the bootstrap
+    cd /opt/boxen/repo
+    ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future ./script/boxen
+    source /opt/boxen/env.sh
+
+
 # Our Boxen
 
 This is a template Boxen project designed for your organization to fork and
