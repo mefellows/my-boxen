@@ -113,8 +113,11 @@ if [ "${SHELL}" = "/bin/bash" ] ; then
 fi
 
 export PS1
-
-
 export EDITOR='subl -w'
 export CVSROOT=:pserver:mfellows@cvs.mit:2401/repository/www
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1536m"
+export PATH=/opt/bin:$PATH
+
+# Give me a bigger Lollie!
+# https://github.com/yeoman/yeoman/wiki/Additional-FAQ#q-im-getting-emfile-too-many-open-files
+ulimit -n 100000

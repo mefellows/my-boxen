@@ -41,6 +41,27 @@ class people::mefellows {
   	source => 'puppet:///modules/people/.profile'
   }
 
+  # Install Scala plugin
+  $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
+  $intellij_plugin_dir2 = "/Users/${::boxen_user}/Library/Application Support/IdeaIC13"
+
+  file { $intellij_plugin_dir2:
+    ensure  => directory,
+    owner   => $::boxen_user,
+    group   => 'staff'
+  }
+
+  archive { 'intellij-scala-plugin':
+    ensure      => present,
+    url         => 'http://plugins.jetbrains.com/files/1347/15875/scala-intellij-bin-0.35.683.zip',
+    checksum    => false,
+    target      => "${intellij_plugin_dir}",
+
+    # Change src dir to speed things up after a restart?
+    src_target  => '/opt/src',
+    timeout     => '300'
+  }
+  include mongodb
 
   # Install my OSS projects to begin with
   repository {
@@ -56,11 +77,14 @@ class people::mefellows {
       source   => 'mefellows/scalam-generator',
       provider => 'git';
 
+    "/Users/${::boxen_user}/development/public/generator-ionic":
+      source   => 'mefellows/generator-ionic',
+      provider => 'git';
+
     # "/Users/${::boxen_user}/development/public/scalam":
     #   source   => 'mefellows/scalam',
     #   provider => 'git';
   }
-
 
   # Export key bindings, user settings etc. for Jetbrains IDE
 
@@ -74,6 +98,20 @@ class people::mefellows {
   file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/keymaps/mfellows-keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-webstorm-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
+  file { "/Users/${::boxen_user}/Library/Preferences/WebStorm6/options/keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-webstorm-options-keymap.xml',
     owner     => $::boxen_user,
     group     => 'staff'
   }

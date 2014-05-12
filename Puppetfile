@@ -80,11 +80,12 @@ github "mongodb",     "1.3.0"
 github "mysql",       "1.2.0"
 github "php",         "1.2.0"
 github "phpstorm",    "1.0.4"
-github "wget",        "1.0.1"
 github "autoconf",    "1.0.0"
 github "pcre",        "1.0.0"
 github "libpng",      "1.0.0"
 github "libtool",        "1.0.0"
+github "wget",       "1.0.1"
+github "android",     "1.2.1"
 
 # github "sudo",        "1.0.0" # This never really seemed to work, it just replaced my sudoers with the templated sudoers file
 

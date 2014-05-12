@@ -26,6 +26,11 @@ GIT
       puppetlabs/stdlib (>= 0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-android
+  specs:
+    android (1.2.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-autoconf
   specs:
     autoconf (1.0.0)
@@ -261,6 +266,7 @@ GITHUBTARBALL
     module-data (0.0.3)
 
 DEPENDENCIES
+  android (= 1.2.1)
   autoconf (= 1.0.0)
   boxen (= 3.4.2)
   camptocamp/archive (= 0.0.1)
