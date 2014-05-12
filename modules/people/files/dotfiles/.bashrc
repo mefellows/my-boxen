@@ -120,4 +120,4 @@ export PATH=/opt/bin:$PATH
 
 # Give me a bigger Lollie!
 # https://github.com/yeoman/yeoman/wiki/Additional-FAQ#q-im-getting-emfile-too-many-open-files
-ulimit -n 100000
+ulimit -n 10000

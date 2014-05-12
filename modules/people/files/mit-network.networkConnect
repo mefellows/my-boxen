@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IPSec</key>
+	<dict>
+		<key>SystemConfig</key>
+		<dict>
+			<key>IPSec</key>
+			<dict>
+				<key>AuthenticationMethod</key>
+				<string>SharedSecret</string>
+				<key>ExportedSharedSecret</key>
+				<data>
+				GPozWrXT5Nqj445n
+				</data>
+				<key>LocalIdentifier</key>
+				<string>melbourneit.com.au</string>
+				<key>LocalIdentifierType</key>
+				<string>KeyID</string>
+				<key>RemoteAddress</key>
+				<string>ipsec.server-vpn.com</string>
+				<key>SharedSecret</key>
+				<string>E81FAE8A-1AC8-4CF5-871B-474465837CF6.SS</string>
+				<key>SharedSecretEncryption</key>
+				<string>Keychain</string>
+				<key>XAuthName</key>
+				<string>matt.fellows@melbourneit.com.au</string>
+				<key>XAuthPasswordEncryption</key>
+				<string>Prompt</string>
+			</dict>
+			<key>PPP</key>
+			<dict>
+				<key>AuthenticationMethod</key>
+				<string>SharedSecret</string>
+				<key>LocalIdentifier</key>
+				<string>melbourneit.com.au</string>
+				<key>LocalIdentifierType</key>
+				<string>KeyID</string>
+				<key>RemoteAddress</key>
+				<string>ipsec.server-vpn.com</string>
+				<key>SharedSecret</key>
+				<string>E81FAE8A-1AC8-4CF5-871B-474465837CF6.SS</string>
+				<key>SharedSecretEncryption</key>
+				<string>Keychain</string>
+				<key>XAuthName</key>
+				<string>matt.fellows@melbourneit.com.au</string>
+				<key>XAuthPasswordEncryption</key>
+				<string>Prompt</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

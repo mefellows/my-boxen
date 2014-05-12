@@ -1,0 +1,50 @@
+#
+# Host Database
+#
+# ** Managed by Puppet. Careful what you add here!! **
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1 localhost
+255.255.255.255 broadcasthost
+::1             localhost
+fe80::1%lo0 localhost
+
+# VPN Hosts
+192.168.160.170 tardis.ipa.server-noc.com<http://tardis.ipa.server-noc.com/> tardis
+202.139.230.227 gecko.stage.mit dc.stage.mit
+192.168.26.154 remoteapps.mit
+192.168.133.11 numbnuts.mit
+192.168.164.104 ldm-bne-ote-dmz-001
+192.168.164.44 ext-rtl-321
+192.168.164.45 ext-rtl-322
+192.168.164.46 ext-rtl-323
+192.168.164.47 ext-rtl-324
+192.168.133.50  bne3-0001fuse.mit
+192.168.133.134 int-jbo-101
+192.168.133.72 stage.box.mit
+192.168.70.202 wiki.mit
+172.22.30.1 financials.mit
+192.168.50.32 jira-serv.mit
+192.168.70.12 smtp.mit
+192.168.70.36 proxy.mit
+192.168.133.138 int-sql-332.mit
+192.168.133.11 cvs.mit
+192.168.133.40 retail.stage.mit
+192.168.133.40 retail2.stage.mit
+#172.23.3.34 sc8-0008iwsprd
+192.168.164.97 prd-wcl-023
+192.168.164.98 prd-wcl-025
+192.168.164.99 prd-wcl-024
+192.168.121.114 prd-rtl-304
+192.168.121.115 prd-rtl-305
+192.168.121.116 prd-rtl-306
+192.168.121.117 prd-rtl-307
+192.168.121.118 prd-rtl-308
+192.168.121.243 prd-rtl-105
+192.168.121.244 prd-rtl-106
+192.168.121.245 prd-rtl-107
+192.168.121.246 prd-rtl-108
+192.168.110.92 bss.us.mit autodb.bss.us.mit
+192.168.133.72 developers.mit
