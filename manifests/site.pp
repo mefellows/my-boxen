@@ -60,6 +60,10 @@ node default {
   include git
   include hub
   include nginx
+  include autoconf
+  include pcre
+  include libpng
+  include wget
 
   # fail if FDE is not enabled
   if $::root_encrypted == 'no' {
@@ -98,8 +102,6 @@ node default {
   include sublime_text_2
   include iterm2::stable
 
-
-  # Consider pkgdmg as provider?
   package { 'unity-4.3.4':
     # provider => 'appdmg',
     provider => 'pkgdmg',
@@ -154,12 +156,19 @@ node default {
   class { 'intellij':
    edition => 'community',
   }
+  include webstorm
 
   # Update plist to use Java 1.7
   exec { 'intellij-replace-required-jdk':
     command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist",
     unless    => "grep 1.7 /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist"
   }
+    # Update plist to use Java 1.7
+  exec { 'webstorm-replace-required-jdk':
+    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/WebStorm.app/Contents/Info.plist",
+    unless    => "grep 1.7 /Applications/WebStorm.app/Contents/Info.plist"
+  }
+
 
   # Install Scala plugin
   $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
@@ -168,17 +177,18 @@ node default {
   file { $intellij_plugin_dir2:
     ensure  => directory,
     owner   => $::boxen_user,
-    group   => 'staff'
+    group   => 'staff',
+
   }
 
-  archive { 'intellij-scala-plugin':
-    ensure      => present,
-    url         => 'http://plugins.jetbrains.com/files/1347/15875/scala-intellij-bin-0.35.683.zip',
-    checksum    => false,
-    target      => "${intellij_plugin_dir}",
-    src_target  => '/tmp',
-    timeout     => '300'
-  }
+  # archive { 'intellij-scala-plugin':
+  #   ensure      => present,
+  #   url         => 'http://plugins.jetbrains.com/files/1347/15875/scala-intellij-bin-0.35.683.zip',
+  #   checksum    => false,
+  #   target      => "${intellij_plugin_dir}",
+  #   src_target  => '/tmp',
+  #   timeout     => '300'
+  # }
   # archive { 'intellij-ruby-plugin':
   #   ensure      => present,
   #   checksum    => false,
@@ -219,9 +229,13 @@ node default {
     ]:
   }
 
-  package {
-    'bash-completion':
+  package { 'bash-completion':
       ensure => present
+  }
+
+  package { 'compass':
+      ensure => present,
+      provider => 'gem'
   }
 
   # OS Customizations
@@ -383,4 +397,28 @@ node default {
   # nodejs::module { 'generator-scalatra':
   #   node_version => 'v0.10.26'
   # }
+
+  include projects::web
+  include projects::mit
 }
+
+# Melbourne IT specific stuff
+# node /\.mit$/ {
+#   notify { 'Hey, you\'re a Melbourne IT employee. Let me configure your work setup.': }
+
+  # Install projects
+
+
+
+  # PHP / Zend Setup
+  ## Apache
+  ## PHP, Composer, Zend?...
+  ## MySQL
+  ## PHP Storm
+
+  # Node / Express
+
+  # Pull Down GitHub Repos
+
+
+# }
