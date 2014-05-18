@@ -13,6 +13,11 @@ class projects::mit {
     source => 'http://download.microsoft.com/download/5/0/0/500C7E1F-3235-47D4-BC11-95A71A1BA3ED/lync_14.0.8_140321.dmg'
   }
 
+  package { 'dbvis_macos_9_1_8_java7':
+    provider => 'pkgdmg',
+    source => 'http://www.dbvis.com/product_download/dbvis-9.1.8/media/dbvis_macos_9_1_8_java7.dmg'
+  }
+
   # Need to do this due to bug in Lync.
   # http://preston4tw.blogspot.com.au/2013/12/microsoft-lync-2011-for-mac-1407-bug.html
   file { '/Applications/Microsoft Lync.app/Contents/Frameworks/USBHidWrapper.framework':
