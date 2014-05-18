@@ -83,6 +83,11 @@ node default {
   include nodejs::v0_8
   include nodejs::v0_10
 
+  # Node modules
+  nodejs::module { ['cordova', 'ionic', 'ios-sim', 'ripple', 'grunt', 'generator-ionic', 'karma', 'karma-jasmine', 'express', 'bower', 'yeoman']:
+    node_version => 'v0.10.26'
+  }
+
   # Set the global default ruby (auto-installs it if it can)
   $ruby_version = '2.0.0-p451'
   class { 'ruby::global':
@@ -117,100 +122,30 @@ node default {
     ]:
   }
 
-  include wget
-
   file { "${boxen::config::srcdir}/our-boxen":
     ensure => link,
     target => $boxen::config::repodir
   }
 
-  # Matt's stuff
+
+  # include chrome # stable
+  # include firefox # stable
+
+  # Live on the edge, man!
+  include firefox::beta
+  include chrome::canary
   include virtualbox
   include java
   include sublime_text_2
   include iterm2::stable
-
-  sublime_text_2::package { 'Emmet':
-    source => 'sergeche/emmet-sublime'
-  }
-
-  sublime_text_2::package { 'Scalaformat':
-    source => 'timonwong/ScalaFormat'
-  }
-
-  sublime_text_2::package { 'ScalaTest':
-    source => 'patgannon/sublimetext-scalatest'
-  }
-
-  sublime_text_2::package { 'Git':
-    source => 'timonwong/ScalaFormat'
-  }
-
-  sublime_text_2::package { 'Puppet':
-    source => 'russCloak/SublimePuppet'
-  }
-
-  sublime_text_2::package { 'Puppet Syntax':
-    source => 'Stubbs/sublime-puppet-syntax'
-  }
-
-  sublime_text_2::package { 'Git Gutter':
-    source => 'jisaacks/GitGutter'
-  }
-
-  sublime_text_2::package { 'SideBar Gutter':
-    source => 'SublimeText/SideBarGit'
-  }
-
-  sublime_text_2::package { 'Gist':
-    source => 'condemil/Gist'
-  }
-
-  sublime_text_2::package { 'Compass':
-    source => 'whatwedo/Sublime-Text-2-Compass-Build-System'
-  }
-
-  sublime_text_2::package { 'Sass':
-    source => 'nathos/sass-textmate-bundle'
-  }
-
-  # IDE
-  include webstorm
-  class { 'intellij':
-   edition => 'community',
-  }
-  include webstorm
-
-  # Update plist to use Java 1.7
-  exec { 'intellij-replace-required-jdk':
-    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist",
-    unless    => "grep 1.7 /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist"
-  }
-    # Update plist to use Java 1.7
-  exec { 'webstorm-replace-required-jdk':
-    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/WebStorm.app/Contents/Info.plist",
-    unless    => "grep 1.7 /Applications/WebStorm.app/Contents/Info.plist"
-  }
-
-  # Browsers
-
-  # include chrome
-  # include firefox
-  include firefox::beta
-  include chrome::canary
-
-  # Vagrant
   include vagrant
-
-  # Virtualbox
   include virtualbox
-
-  # Dropbox
   include dropbox
   include evernote
   include hipchat
   include omnigraffle::pro
   include skype
+  include spotify
 
   # Packages installed via homebrew
   package {
@@ -227,9 +162,29 @@ node default {
     ]:
   }
 
-  package { 'compass':
+  # Ruby Gems
+  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra']:
       ensure => present,
       provider => 'gem'
+  }
+
+  include projects::ide_sublime
+
+  # IDE Setup
+  include webstorm
+  class { 'intellij':
+   edition => 'community',
+  }
+
+  # Update plist to use Java 1.7
+  exec { 'intellij-replace-required-jdk':
+    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist",
+    unless    => "grep 1.7 /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist"
+  }
+    # Update plist to use Java 1.7
+  exec { 'webstorm-replace-required-jdk':
+    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/WebStorm.app/Contents/Info.plist",
+    unless    => "grep 1.7 /Applications/WebStorm.app/Contents/Info.plist"
   }
 
   # OS Customizations
@@ -263,6 +218,7 @@ node default {
   # Add/remove applications to the Dock
   include dockutil
 
+  # I like my dock clean and tidy please
   dockutil::item { 'Add Terminal':
     item     => '/Applications/iTerm.app',
     label    => 'iTerm',
@@ -355,19 +311,7 @@ node default {
     action   => 'remove'
   }
 
-  #### Additional Goodies
-
-  # Spotify
-  include spotify
-
-  # Node modules
-
-  ### Bower, yeoman, s8 ....
-  # install some npm modules
-  nodejs::module { ['cordova', 'ionic', 'ios-sim', 'ripple', 'grunt', 'generator-ionic', 'karma', 'karma-jasmine', 'express', 'bower', 'yeoman']:
-    node_version => 'v0.10.26'
-  }
-
+  # Include project specific stuff
   include projects::web
   include projects::mit
 }

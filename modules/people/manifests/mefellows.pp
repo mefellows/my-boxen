@@ -80,10 +80,6 @@ class people::mefellows {
     "/Users/${::boxen_user}/development/public/generator-ionic":
       source   => 'mefellows/generator-ionic',
       provider => 'git';
-
-    # "/Users/${::boxen_user}/development/public/scalam":
-    #   source   => 'mefellows/scalam',
-    #   provider => 'git';
   }
 
   # Export key bindings, user settings etc. for Jetbrains IDE
@@ -120,14 +116,13 @@ class people::mefellows {
     group     => 'wheel'
   }
 
-  # Root access baby!
+  # Coz VPN sucks!
   file { '/etc/hosts':
     ensure		=> file,
     source		=> 'puppet:///modules/people/hosts',
     owner     => 'root',
     group     => 'wheel'
   }
-
 
   # For cordova / java
   $ant_version = "apache-ant-1.9.3"
@@ -159,17 +154,13 @@ class people::mefellows {
   include android::platform_tools
   # android::build_tools
 
-  # Consider pkgdmg as provider?
   package { 'android-intel-HAXM':
-    # provider => 'appdmg',
     provider => 'pkgdmg',
     source => 'https://software.intel.com/sites/default/files/managed/68/45/haxm-macosx_r04.zip'
   }
 
   package { 'unity-4.3.4':
-    # provider => 'appdmg',
     provider => 'pkgdmg',
     source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
   }
-
 }
