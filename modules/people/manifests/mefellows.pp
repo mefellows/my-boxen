@@ -62,6 +62,7 @@ class people::mefellows {
     timeout     => '300'
   }
   include mongodb
+  include postgresql
 
   # Install my OSS projects to begin with
   repository {
