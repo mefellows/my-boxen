@@ -168,7 +168,7 @@ node default {
       provider => 'gem'
   }
 
-  include projects::ide_sublime
+  # include projects::ide_sublime
 
   # IDE Setup
   include webstorm
