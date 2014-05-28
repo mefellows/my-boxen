@@ -163,12 +163,12 @@ node default {
   }
 
   # Ruby Gems
-  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra']:
+  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra', 'travis']:
       ensure => present,
       provider => 'gem'
   }
 
-  # include projects::ide_sublime
+  include projects::ide_sublime
 
   # IDE Setup
   include webstorm
