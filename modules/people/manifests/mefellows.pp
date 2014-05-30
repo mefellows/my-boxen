@@ -92,6 +92,13 @@ class people::mefellows {
     group     => 'staff'
   }
 
+  file { "/Users/${::boxen_user}/Library/Preferences/RubyMine60/keymaps/mfellows-keymap.xml":
+    ensure    => file,
+    source    => 'puppet:///modules/people/ide/mfellows-rubymine-keymap.xml',
+    owner     => $::boxen_user,
+    group     => 'staff'
+  }
+
   file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',

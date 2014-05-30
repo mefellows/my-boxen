@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keymap version="1" name="Dvorak - Eclipse" parent="Eclipse (Mac OS X)">
+  <action id="Back">
+    <mouse-shortcut keystroke="button4" />
+  </action>
+  <action id="CloseAllEditors">
+    <keyboard-shortcut first-keystroke="shift meta W" />
+    <keyboard-shortcut first-keystroke="shift control meta W" />
+  </action>
+  <action id="CommentByBlockComment" />
+  <action id="CommentByLineComment">
+    <keyboard-shortcut first-keystroke="meta SLASH" />
+    <keyboard-shortcut first-keystroke="meta OPEN_BRACKET" />
+  </action>
+  <action id="Find">
+    <keyboard-shortcut first-keystroke="meta F" />
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="F3" />
+    <mouse-shortcut keystroke="control button1" />
+    <mouse-shortcut keystroke="meta button1" />
+  </action>
+  <action id="GotoRelated" />
+  <action id="MoveLineDown">
+    <keyboard-shortcut first-keystroke="alt DOWN" />
+  </action>
+  <action id="MoveLineUp">
+    <keyboard-shortcut first-keystroke="alt UP" />
+  </action>
+  <action id="MoveStatementDown">
+    <keyboard-shortcut first-keystroke="control meta DOWN" />
+  </action>
+  <action id="MoveStatementUp">
+    <keyboard-shortcut first-keystroke="control meta UP" />
+  </action>
+  <action id="SwitchApply">
+    <keyboard-shortcut first-keystroke="control alt ENTER" />
+  </action>
+  <action id="SwitchDown">
+    <keyboard-shortcut first-keystroke="control alt DOWN" />
+  </action>
+  <action id="SwitchLeft">
+    <keyboard-shortcut first-keystroke="control alt LEFT" />
+  </action>
+  <action id="SwitchRight">
+    <keyboard-shortcut first-keystroke="control alt RIGHT" />
+  </action>
+  <action id="SwitchUp">
+    <keyboard-shortcut first-keystroke="control alt UP" />
+  </action>
+</keymap>
