@@ -115,9 +115,9 @@ fi
 export PS1
 export EDITOR='subl -w'
 export CVSROOT=:pserver:mfellows@cvs.mit:2401/repository/www
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1536m"
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=1024m -Xms1G -Xmx2G"
 export PATH=/opt/bin:$PATH
-
+export PATH=$PATH:~/bin
 # Give me a bigger Lollie!
 # https://github.com/yeoman/yeoman/wiki/Additional-FAQ#q-im-getting-emfile-too-many-open-files
 ulimit -n 10000

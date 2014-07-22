@@ -21,6 +21,23 @@ def github(name, *args)
   end
 end
 
+# Shortcut for a module from GitHub's boxen organization
+def matt(name, *args)
+  options ||= if args.last.is_a? Hash
+    args.last
+  else
+    {}
+  end
+
+  if path = options.delete(:path)
+    mod name, :path => path
+  else
+    version = args.first
+    options[:repo] ||= "mefellows/puppet-#{name}"
+    mod name, version, :github_tarball => options[:repo]
+  end
+end
+
 # Shortcut for a module under development
 def dev(name, *args)
   mod name, :path => "#{ENV['HOME']}/development/boxen/puppet-#{name}"
@@ -72,6 +89,7 @@ github "vagrant",     "3.0.7"
 github "dropbox",     "1.2.0"
 github "evernote",    "2.0.5"
 github "intellij",    "1.5.1"
+github "rubymine",    "1.1.0"
 github "webstorm",    "1.1.1"
 github "hipchat",     "1.1.1"
 github "iterm2",      "1.0.9"
@@ -106,7 +124,7 @@ private_repo = ENV['BOXEN_PRIVATE_REPO']
 
 mod "onegeek/boxen_private",
   :git => private_repo,
-  :ref => '0.0.8'
+  :ref => '0.0.10'
 
 # dev "boxen_private"
 

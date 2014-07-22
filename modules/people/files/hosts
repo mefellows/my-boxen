@@ -12,7 +12,6 @@
 fe80::1%lo0 localhost
 
 # VPN Hosts
-192.168.160.170 tardis.ipa.server-noc.com
 202.139.230.227 gecko.stage.mit dc.stage.mit
 192.168.26.154 remoteapps.mit
 192.168.133.11 numbnuts.mit
