@@ -99,12 +99,7 @@ node default {
   ruby::version { '2.0.0': }
   ruby::version { '2.1.0': }
   ruby::version { '2.1.1': }
-
-  ruby::gem { "compass for ruby ${ruby_version}":
-    gem           => 'compass',
-    version       => '~> 0.12.6',
-    ruby          => $ruby_version,
-  }
+  ruby::version { '2.1.2': }
 
   # Setup alternative bin dir
   file { '/opt/bin':
@@ -133,13 +128,19 @@ node default {
 
   # Live on the edge, man!
   include firefox::beta
-  include chrome::canary
-  include virtualbox
+  include chrome::beta
   include java
   include sublime_text_2
   include iterm2::stable
-  include vagrant
-  include virtualbox
+  # include vagrant
+  class { 'vagrant':
+    version => '1.6.5'
+  }
+  # include virtualbox
+  class { 'virtualbox':
+    version     => '4.3.16',
+    patch_level => '95972'
+  }
   include dropbox
   include evernote
   include hipchat
@@ -163,7 +164,7 @@ node default {
   }
 
   # Ruby Gems
-  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra', 'travis']:
+  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra', 'travis', 'jekyll']:
       ensure => present,
       provider => 'gem'
   }
@@ -171,9 +172,15 @@ node default {
   include projects::ide_sublime
 
   # IDE Setup
-  include webstorm
+  class { 'webstorm':
+      version => '8.0.4'
+  }
+  class { 'rubymine':
+      version => '6.3.3'
+  }
   class { 'intellij':
    edition => 'community',
+   version => '13.1.4b'
   }
 
   # Update plist to use Java 1.7
