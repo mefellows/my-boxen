@@ -82,11 +82,7 @@ node default {
   include nodejs::v0_6
   include nodejs::v0_8
   include nodejs::v0_10
-
-  # Node modules
-  nodejs::module { ['cordova', 'ionic', 'ios-sim', 'ripple', 'grunt', 'generator-ionic', 'karma', 'karma-jasmine', 'express', 'bower', 'yeoman']:
-    node_version => 'v0.10.26'
-  }
+  class { 'nodejs::global': version => 'v0.10.26' }
 
   # Set the global default ruby (auto-installs it if it can)
   $ruby_version = '2.0.0-p451'
@@ -130,17 +126,17 @@ node default {
   include firefox::beta
   include chrome::beta
   include java
-  include sublime_text_2
   include iterm2::stable
-  # include vagrant
+
   class { 'vagrant':
     version => '1.6.5'
   }
-  # include virtualbox
+
   class { 'virtualbox':
     version     => '4.3.16',
     patch_level => '95972'
   }
+
   include dropbox
   include evernote
   include hipchat
@@ -169,156 +165,10 @@ node default {
       provider => 'gem'
   }
 
-  include projects::ide_sublime
-
-  # IDE Setup
-  class { 'webstorm':
-      version => '8.0.4'
-  }
-  class { 'rubymine':
-      version => '6.3.3'
-  }
-  class { 'intellij':
-   edition => 'community',
-   version => '13.1.4b'
-  }
-
-  # Update plist to use Java 1.7
-  exec { 'intellij-replace-required-jdk':
-    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist",
-    unless    => "grep 1.7 /Applications/IntelliJ\ IDEA\ 13\ CE.app/Contents/Info.plist"
-  }
-    # Update plist to use Java 1.7
-  exec { 'webstorm-replace-required-jdk':
-    command   => "sed -i.bak 's/1\.6\*/1\.7*/g' /Applications/WebStorm.app/Contents/Info.plist",
-    unless    => "grep 1.7 /Applications/WebStorm.app/Contents/Info.plist"
-  }
-
-  # OS Customizations
-  include osx::global::expand_save_dialog
-  include osx::global::disable_remote_control_ir_receiver
-  include osx::dock::autohide
-  include osx::finder::empty_trash_securely
-  include osx::software_update
-  include osx::no_network_dsstores
-
-  # Show the path bar
-
-  osxutils::defaults { 'com.apple.finder':
-    key     => 'ShowPathbar -bool',
-    value   => true,
-    user    => 'root'
-  }
-
-  boxen::osx_defaults { 'Enable Secondary Click':
-    ensure => present,
-    domain => 'com.apple.driver.AppleBluetoothMultitouch.mouse',
-    key    => 'MouseButtonMode',
-    value  => 'TwoButton',
-    user   => $::boxen_user;
-  }
-
-  class { 'osx::dock::icon_size':
-    size => 36
-  }
-
-  # Add/remove applications to the Dock
-  include dockutil
-
-  # I like my dock clean and tidy please
-  dockutil::item { 'Add Terminal':
-    item     => '/Applications/iTerm.app',
-    label    => 'iTerm',
-    action   => 'add',
-    position => 1,
-  }
-
-  dockutil::item { 'Add Sublime':
-    item     => '/Applications/Sublime Text 2.app',
-    label    => 'Sublime Text 2',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add Spotify':
-    item     => '/Applications/Spotify.app',
-    label    => 'Spotify',
-    action   => 'add',
-    position => 2,
-  }
-  dockutil::item { 'Add Firefox':
-    item     => '/Applications/Firefox.app',
-    label    => 'Firefox',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add Google Chrome':
-    item     => '/Applications/Google Chrome.app',
-    label    => 'Google Chrome',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add HipChat':
-    item     => '/Applications/HipChat.app',
-    label    => 'HipChat',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add Dropbox':
-    item     => '/Applications/Dropbox.app',
-    label    => 'Dropbox',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add Evernote':
-    item     => '/Applications/Evernote.app',
-    label    => 'Evernote',
-    action   => 'add',
-    position => 2,
-  }
-
-  dockutil::item { 'Add Intellij':
-    item     => '/Applications/IntelliJ IDEA 13 CE.app',
-    label    => 'IntelliJ IDEA 13 CE',
-    action   => 'add',
-    position => 3,
-  }
-
-  dockutil::item { 'Remove Notes':
-    item     => '/Applications/Notes.app',
-    label    => 'Notes',
-    action   => 'remove'
-  }
-
-  dockutil::item { 'Remove Photo Booth':
-    item     => '/Applications/Photo Booth.app',
-    label    => 'Photo Booth',
-    action   => 'remove'
-  }
-
-  dockutil::item { 'Remove Mission Control':
-    item     => '/Applications/Mission Control.app',
-    label    => 'Mission Control',
-    action   => 'remove'
-  }
-
-  dockutil::item { 'Remove Launchpad':
-    item     => '/Applications/Launchpad.app',
-    label    => 'Launchpad',
-    action   => 'remove'
-  }
-
-  dockutil::item { 'Remove Contacts':
-    item     => '/Applications/Contacts.app',
-    label    => 'Contacts',
-    action   => 'remove'
-  }
-
   # Include project specific stuff
   include projects::web
-  include projects::mit
+  include projects::mac_preferences
+  #include projects::android
+  #include projects::game
+  #include projects::mit
 }

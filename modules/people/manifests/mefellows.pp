@@ -41,6 +41,11 @@ class people::mefellows {
   	source => 'puppet:///modules/people/.profile'
   }
 
+  ## IDE Setup
+  include sublime_text_2
+  include projects::ide_sublime
+  include projects::ide
+
   # Install Scala plugin
   $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
   $intellij_plugin_dir2 = "/Users/${::boxen_user}/Library/Application Support/IdeaIC13"
@@ -61,6 +66,7 @@ class people::mefellows {
     src_target  => '/opt/src',
     timeout     => '300'
   }
+
   include mongodb
   include postgresql
 
@@ -74,6 +80,14 @@ class people::mefellows {
       source   => 'mefellows/cloudspec',
       provider => 'git';
 
+    "/Users/${::boxen_user}/development/public/respite":
+      source   => 'mefellows/respite',
+      provider => 'git';
+
+    "/Users/${::boxen_user}/development/public/respite-sbt.g8":
+      source   => 'mefellows/respite-sbt.g8',
+      provider => 'git';
+
     "/Users/${::boxen_user}/development/public/scalam-generator":
       source   => 'mefellows/scalam-generator',
       provider => 'git';
@@ -85,14 +99,14 @@ class people::mefellows {
 
   # Export key bindings, user settings etc. for Jetbrains IDE
 
-  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/keymaps/mfellows-keymap.xml":
+  file { ["/Users/${::boxen_user}/Library/Preferences/IdeaIC13/keymaps/mfellows-keymap.xml", "/Users/${::boxen_user}/Library/Preferences/RubyMine60/keymaps/mfellows-keymap.xml"]:
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-keymap.xml',
     owner     => $::boxen_user,
     group     => 'staff'
   }
 
-  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
+  file { ["/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml", "/Users/${::boxen_user}/Library/Preferences/RubyMine60/options/keymap.xml"]:
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',
     owner     => $::boxen_user,
@@ -123,45 +137,5 @@ class people::mefellows {
     source		=> 'puppet:///modules/people/hosts',
     owner     => 'root',
     group     => 'wheel'
-  }
-
-  # For cordova / java
-  $ant_version = "apache-ant-1.9.3"
-
-  file { "/opt/${ant_version}/":
-    ensure  => directory
-  }
-
-  archive { 'ant':
-    ensure      => present,
-    url         => "http://mirror.rackcentral.com.au/apache/ant/binaries/${ant_version}-bin.tar.gz",
-    target      => "/opt/",
-    checksum    => false,
-    # Change src dir to speed things up after a restart?
-    src_target  => '/opt/src/',
-    timeout     => '300'
-  }
-
-  file { '/opt/bin/ant':
-    ensure    => link,
-    target    => "/opt/${ant_version}/bin/ant"
-  }
-
-  #
-  # Game Dev
-  #
-  include android::sdk
-  include android::tools
-  include android::platform_tools
-  # android::build_tools
-
-  package { 'android-intel-HAXM':
-    provider => 'pkgdmg',
-    source => 'https://software.intel.com/sites/default/files/managed/68/45/haxm-macosx_r04.zip'
-  }
-
-  package { 'unity-4.3.4':
-    provider => 'pkgdmg',
-    source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
   }
 }

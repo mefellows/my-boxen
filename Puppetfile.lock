@@ -15,8 +15,8 @@ GIT
 
 GIT
   remote: git@bitbucket.org:mfellows/onegeek-boxen-private.git
-  ref: 0.0.8
-  sha: 53cbec25bba96704716e4269e6aea3d540186d19
+  ref: 0.0.16
+  sha: dbebee3f10133fcdd89c69d3cfe340c0df5f2c96
   specs:
     onegeek-boxen_private (0.1.0)
       puppetlabs-stdlib (>= 0)
@@ -207,6 +207,11 @@ GITHUBTARBALL
     ruby (8.1.2)
 
 GITHUBTARBALL
+  remote: boxen/puppet-rubymine
+  specs:
+    rubymine (1.1.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-skype
   specs:
     skype (1.0.8)
@@ -315,6 +320,7 @@ DEPENDENCIES
   puppetlabs-vcsrepo (= 0.2.0)
   repository (= 2.3.0)
   ruby (= 8.1.2)
+  rubymine (= 1.1.0)
   skype (= 1.0.8)
   spotify (= 1.0.2)
   stdlib (= 4.2.1)

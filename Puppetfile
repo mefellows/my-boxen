@@ -82,14 +82,13 @@ github "mysql",       "1.2.0"
 github "postgresql",  "3.0.0"
 github "php",         "1.2.0"
 github "phpstorm",    "1.0.4"
+github "rubymine",    "1.1.0"
 github "autoconf",    "1.0.0"
 github "pcre",        "1.0.0"
 github "libpng",      "1.0.0"
 github "libtool",     "1.0.0"
 github "wget",        "1.0.1"
 github "android",     "1.2.1"
-
-# github "sudo",        "1.0.0" # This never really seemed to work, it just replaced my sudoers with the templated sudoers file
 
 forge "https://forge.puppetlabs.com"
 
@@ -106,7 +105,7 @@ private_repo = ENV['BOXEN_PRIVATE_REPO']
 
 mod "onegeek/boxen_private",
   :git => private_repo,
-  :ref => '0.0.8'
+  :ref => '0.0.16'
 
 # dev "boxen_private"
 

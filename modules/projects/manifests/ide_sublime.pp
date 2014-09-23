@@ -1,7 +1,9 @@
 class projects::ide_sublime {
-  notify { 'Loading Sublime Plugins': }
+  notify { 'Loading Sublime + Plugins': }
 
-# sublime plugins
+  include sublime_text_2
+
+  # sublime plugins
   sublime_text_2::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
   }
