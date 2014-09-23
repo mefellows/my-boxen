@@ -80,6 +80,10 @@ class people::mefellows {
       source   => 'mefellows/cloudspec',
       provider => 'git';
 
+    "/Users/${::boxen_user}/development/public/sbt-dotenv":
+      source   => 'mefellows/sbtdotenv',
+      provider => 'git';
+
     "/Users/${::boxen_user}/development/public/respite":
       source   => 'mefellows/respite',
       provider => 'git';
