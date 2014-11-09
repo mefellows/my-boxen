@@ -40,12 +40,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+  # We have color support; assume it's compliant with Ecma-48
+  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+  # a case would tend to support setf rather than setaf.)
+  color_prompt=yes
     else
-	color_prompt=
+  color_prompt=
     fi
 fi
 
@@ -76,6 +76,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias top='top -o -rsize'
 alias mongo='mongo --port=17017'
+alias vim='/opt/boxen/homebrew/Cellar/macvim/7.4-73/MacVim.app/Contents/MacOS/Vim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

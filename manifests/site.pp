@@ -148,6 +148,9 @@ node default {
   include spotify
 
   # Packages installed via homebrew
+
+  homebrew::tap { 'homebrew/binary': }
+
   package {
     [
       'heroku-toolbelt',
@@ -159,6 +162,13 @@ node default {
       'ruby-build',
       'gnu-sed', # replace useless sed that comes with OSX
       'bash-completion',
+      'irssi',
+      'go',
+      'etcdctl',
+      'python',
+      'docker',
+      'direnv',
+      'macvim'
     ]:
   }
 
@@ -168,13 +178,18 @@ node default {
       provider => 'gem'
   }
 
-  include projects::ide_sublime
-
   # IDE Setup
-  include webstorm
+  include projects::ide_sublime
+  # include webstorm
+
   class { 'intellij':
    edition => 'community',
+   version => '13.1.3'
   }
+
+  # class { 'rubymine':
+  #   version => '6.3.2'
+  # }
 
   # Update plist to use Java 1.7
   exec { 'intellij-replace-required-jdk':
