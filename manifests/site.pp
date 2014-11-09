@@ -82,11 +82,7 @@ node default {
   include nodejs::v0_6
   include nodejs::v0_8
   include nodejs::v0_10
-
-  # Node modules
-  nodejs::module { ['cordova', 'ionic', 'ios-sim', 'ripple', 'grunt', 'generator-ionic', 'karma', 'karma-jasmine', 'express', 'bower', 'yeoman']:
-    node_version => 'v0.10.26'
-  }
+  class { 'nodejs::global': version => 'v0.10.26' }
 
   # Set the global default ruby (auto-installs it if it can)
   $ruby_version = '2.0.0-p451'
@@ -99,12 +95,7 @@ node default {
   ruby::version { '2.0.0': }
   ruby::version { '2.1.0': }
   ruby::version { '2.1.1': }
-
-  ruby::gem { "compass for ruby ${ruby_version}":
-    gem           => 'compass',
-    version       => '~> 0.12.6',
-    ruby          => $ruby_version,
-  }
+  ruby::version { '2.1.2': }
 
   # Setup alternative bin dir
   file { '/opt/bin':
@@ -133,13 +124,19 @@ node default {
 
   # Live on the edge, man!
   include firefox::beta
-  include chrome::canary
-  include virtualbox
+  include chrome::beta
   include java
-  include sublime_text_2
   include iterm2::stable
-  include vagrant
-  include virtualbox
+
+  class { 'vagrant':
+    version => '1.6.5'
+  }
+
+  class { 'virtualbox':
+    version     => '4.3.16',
+    patch_level => '95972'
+  }
+
   include dropbox
   include evernote
   include hipchat
@@ -173,11 +170,12 @@ node default {
   }
 
   # Ruby Gems
-  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra', 'travis']:
+  package { ['compass', 'puppet', 'librarian-puppet', 'sinatra', 'travis', 'jekyll']:
       ensure => present,
       provider => 'gem'
   }
 
+<<<<<<< HEAD
   # IDE Setup
   include projects::ide_sublime
   # include webstorm
@@ -328,5 +326,8 @@ node default {
 
   # Include project specific stuff
   include projects::web
-  include projects::mit
+  include projects::mac_preferences
+  #include projects::android
+  #include projects::game
+  #include projects::mit
 }

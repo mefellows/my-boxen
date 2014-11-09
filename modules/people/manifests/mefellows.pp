@@ -52,6 +52,7 @@ class people::mefellows {
   	source => 'puppet:///modules/people/.profile'
   }
 
+<<<<<<< HEAD
   # IRC Client
   file { "/Users/${::boxen_user}/.irssi":
     ensure => directory
@@ -61,6 +62,12 @@ class people::mefellows {
     ensure => file,
     source => 'puppet:///modules/people/.irssi.config'
   }
+=======
+  ## IDE Setup
+  include sublime_text_2
+  include projects::ide_sublime
+  include projects::ide
+>>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
 
   # Install Scala plugin
   $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
@@ -83,7 +90,10 @@ class people::mefellows {
     timeout     => '300'
   }
 
+<<<<<<< HEAD
   # Databases
+=======
+>>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
   include mongodb
   include postgresql
 
@@ -95,6 +105,18 @@ class people::mefellows {
 
     "/Users/${::boxen_user}/development/public/cloudspec":
       source   => 'mefellows/cloudspec',
+      provider => 'git';
+
+    "/Users/${::boxen_user}/development/public/sbt-dotenv":
+      source   => 'mefellows/sbtdotenv',
+      provider => 'git';
+
+    "/Users/${::boxen_user}/development/public/respite":
+      source   => 'mefellows/respite',
+      provider => 'git';
+
+    "/Users/${::boxen_user}/development/public/respite-sbt.g8":
+      source   => 'mefellows/respite-sbt.g8',
       provider => 'git';
 
     "/Users/${::boxen_user}/development/public/scalam-generator":
@@ -112,14 +134,14 @@ class people::mefellows {
 
   # Export key bindings, user settings etc. for Jetbrains IDE
 
-  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/keymaps/mfellows-keymap.xml":
+  file { ["/Users/${::boxen_user}/Library/Preferences/IdeaIC13/keymaps/mfellows-keymap.xml", "/Users/${::boxen_user}/Library/Preferences/RubyMine60/keymaps/mfellows-keymap.xml"]:
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-keymap.xml',
     owner     => $::boxen_user,
     group     => 'staff'
   }
 
-  file { "/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml":
+  file { ["/Users/${::boxen_user}/Library/Preferences/IdeaIC13/options/keymap.xml", "/Users/${::boxen_user}/Library/Preferences/RubyMine60/options/keymap.xml"]:
     ensure    => file,
     source    => 'puppet:///modules/people/ide/mfellows-jetbrains-options-keymap.xml',
     owner     => $::boxen_user,
@@ -158,6 +180,7 @@ class people::mefellows {
     owner     => 'root',
     group     => 'wheel'
   }
+<<<<<<< HEAD
 
   # For cordova / java
   $ant_version = "apache-ant-1.9.3"
@@ -247,4 +270,6 @@ curl -O -L "https://www.modern.ie/vmdownload?platform=mac&virtPlatform=virtualbo
 
 
 
+=======
+>>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
 }

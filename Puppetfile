@@ -46,37 +46,37 @@ end
 # Includes many of our custom types and providers, as well as global
 # config. Required.
 
-github "boxen", "3.4.2"
+github "boxen", "3.6.2"
 
 # Support for default hiera data in modules
 
-github "module-data", "0.0.3", :repo => "ripienaar/puppet-module-data"
+github "module_data", "0.0.3", :repo => "ripienaar/puppet-module-data"
 
 # Core modules for a basic development environment. You can replace
 # some/most of these if you want, but it's not recommended.
 
 github "dnsmasq",     "1.0.1"
 github "foreman",     "1.2.0"
-github "gcc",         "2.0.100"
-github "git",         "2.3.0"
+github "gcc",         "2.1.1"
+github "git",         "2.5.0"
 github "go",          "1.1.0"
-github "homebrew",    "1.6.2"
+github "homebrew",    "1.9.4"
 github "hub",         "1.3.0"
-github "inifile",     "1.0.3", :repo => "puppetlabs/puppetlabs-inifile"
+github "inifile",     "1.1.1", :repo => "puppetlabs/puppetlabs-inifile"
 github "nginx",       "1.4.3"
-github "nodejs",      "3.7.0"
+github "nodejs",      "3.8.1"
 github "openssl",     "1.0.0"
 github "phantomjs",   "2.3.0"
 github "pkgconfig",   "1.0.0"
 github "repository",  "2.3.0"
-github "ruby",        "7.3.0"
-github "stdlib",      "4.1.0", :repo => "puppetlabs/puppetlabs-stdlib"
-github "stdlib",      "4.1.0", :repo => "puppetlabs/puppetlabs-stdlib"
-github "sysctl",      "1.0.1"
+github "ruby",        "8.1.2"
+github "stdlib",      "4.2.1", :repo => "puppetlabs/puppetlabs-stdlib"
+github "sudo",        "1.0.0"
 github "xquartz",     "1.1.1"
 
 # Matt's modules
-github "virtualbox",     "1.0.11"
+github "sysctl",      "1.0.1"
+github "virtualbox",     "1.0.13"
 github "java",	         "1.5.0"
 github "sublime_text_2", "1.1.2"
 github "chrome",      "1.1.2"
@@ -84,8 +84,8 @@ github "dockutil",    "0.1.2"
 github "firefox",     "1.1.9"
 github "osx",         "2.2.2"
 github "heroku",      "2.1.1"
-github "spotify",     "1.0.1"
-github "vagrant",     "3.0.7"
+github "spotify",     "1.0.2"
+github "vagrant",     "3.2.0"
 github "dropbox",     "1.2.0"
 github "evernote",    "2.0.5"
 github "intellij",    "1.5.1"
@@ -100,14 +100,13 @@ github "mysql",       "1.2.0"
 github "postgresql",  "3.0.0"
 github "php",         "1.2.0"
 github "phpstorm",    "1.0.4"
+github "rubymine",    "1.1.0"
 github "autoconf",    "1.0.0"
 github "pcre",        "1.0.0"
 github "libpng",      "1.0.0"
 github "libtool",     "1.0.0"
 github "wget",        "1.0.1"
 github "android",     "1.2.1"
-
-# github "sudo",        "1.0.0" # This never really seemed to work, it just replaced my sudoers with the templated sudoers file
 
 forge "https://forge.puppetlabs.com"
 
@@ -124,7 +123,7 @@ private_repo = ENV['BOXEN_PRIVATE_REPO']
 
 mod "onegeek/boxen_private",
   :git => private_repo,
-  :ref => '0.0.11'
+  :ref => '0.0.16'
 
 # dev "boxen_private"
 
