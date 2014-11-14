@@ -20,11 +20,13 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-git'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
 "Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'vim-scripts/copypath.vim'
 "Plugin 'vim-scripts/Align'
+Plugin 'majutsushi/tagbar'
 
 " Languages/Syntax
 Plugin 'vim-ruby/vim-ruby'
@@ -108,3 +110,5 @@ map <F4> :TlistToggle<cr>
 "set omnifunc=syntaxcomplete#Complete
 "let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+map <C-n> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
