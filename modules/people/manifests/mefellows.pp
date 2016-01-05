@@ -52,22 +52,10 @@ class people::mefellows {
   	source => 'puppet:///modules/people/.profile'
   }
 
-<<<<<<< HEAD
-  # IRC Client
-  file { "/Users/${::boxen_user}/.irssi":
-    ensure => directory
-  }
-
-  file { "/Users/${::boxen_user}/.irssi/config":
-    ensure => file,
-    source => 'puppet:///modules/people/.irssi.config'
-  }
-=======
   ## IDE Setup
   include sublime_text_2
   include projects::ide_sublime
   include projects::ide
->>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
 
   # Install Scala plugin
   $intellij_plugin_dir = "/Users/${::boxen_user}/Library/Application\ Support/IdeaIC13"
@@ -90,12 +78,7 @@ class people::mefellows {
     timeout     => '300'
   }
 
-<<<<<<< HEAD
-  # Databases
-=======
->>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
   include mongodb
-  include postgresql
 
   # Install my OSS projects to begin with
   repository {
@@ -180,7 +163,6 @@ class people::mefellows {
     owner     => 'root',
     group     => 'wheel'
   }
-<<<<<<< HEAD
 
   # For cordova / java
   $ant_version = "apache-ant-1.9.3"
@@ -222,11 +204,6 @@ class people::mefellows {
     source => 'http://netstorage.unity3d.com/unity/unity-4.3.4.dmg'
   }
 
-  # package { 'mactex':
-  #   provider => 'pkgdmg',
-  #   source => 'http://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg'
-  # }
-
 # Installs VirtualBox
 #
 # Usage:
@@ -260,16 +237,4 @@ class people::mefellows {
   }
 }
 
-
-
-
-curl -O -L "https://www.modern.ie/vmdownload?platform=mac&virtPlatform=virtualbox&browserOS=IE11-Win8.1&parts=4&filename=VMBuild_20140402/VirtualBox/IE11_Win8.1/Mac/IE11.Win8.1.For.MacVirtualBox.part{1.sfx,2.rar,3.rar,4.rar}"
-
-
-
-
-
-
-=======
->>>>>>> ad5aab56cb1301aac8ca1949aa76407e4eaafa37
 }
